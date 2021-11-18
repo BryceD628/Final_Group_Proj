@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUMARCHE Business</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+            $(document).ready(function () {
+    $('#in-listing_category-401').change(function () {
+            if (this.checked) {
+                $("#listing_category-401 .children").slideDown("fast");
+            }
+            else {
+            $("#listing_category-401 .children").slideUp("fast");
+            }
+        })
+    })
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+
+        <a class="navbar-brand" href="/home">    
+            <img src="/static/img/logo.png" alt="icon" style="width: 20%;">   </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/home" style="color: #DD2337;">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/dashboard" style="color: #DD2337;">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/account" style="color: #DD2337;">Account</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/logout" style="color: #DD2337;">Logout</a>
+            </li>
+        </ul>
+
+        </div>
+    </nav>
+    <div class="col-8 mx-auto" style="margin: 3%;">
+        <h2>Welcome Back {{user.first_name}}!</h2>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                <h4 style="color: lightgray;">Step 1: Create Items to pre-sell for your new project</h4>
+                <h5 class="card-title">Create New Item</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <form action="/create/project" method="POST">
+                        <form action="/create/product" method="POST">
+                        <div class="flex-container" style="display: flex;">
+                            <div class="flex-child magenta" style="flex: 1; margin-right: 20px;">
+                                <div class="form-group">
+                                    <label for="product_title">Product Title</label>
+                                    <input type="text" class="form-control" placeholder="Enter product name" name="product_title" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea class="form-control" rows="3" name="description" required="required"></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="category" id="category">Category</label>
+                                    <select class="form-control" required="required">
+                                        <li id="listing_category-401"><label class="selectit"><input value="401" type="checkbox" class="required option" name="_listing_category[]" id="in-listing_category-401" aria-required="true"> Artists/Bands</label>
+                                            <ul class="children">
+                                            <li id="listing_category-399"><label class="selectit"><input value="399" type="checkbox" class="required" name="_listing_category[]" id="in-listing_category-399" aria-required="true"> Acoustic Artists/Bands</label></li>
+                                            <li id="listing_category-402"><label class="selectit"><input value="402" type="checkbox" class="required" name="_listing_category[]"  id="in-listing_category-402" aria-required="true"> Alternative Artists/Bands</label></li>
+                                            </ul>
+                                            </li>
+
+
+
+                                        <option>Apparel</option>
+                                        <option>Shoes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="size">Size Provided</label>
+                                    <select class="form-control" required="required">
+                                        <option>Apparel</option>
+                                        <option>Shoes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="product_title">Materials</label>
+                                    <input type="text" class="form-control" name="materials" required="required">
+                                </div>
+                            </div>
+                            
+                            <div class="flex-child green" style="flex: 1; margin-right: 20px;">
+
+                                <div class="form-group">
+                                <label for="product_title">Price</label>
+                                $<input type="number" class="form-control" placeholder="Insert the number in USD" name="price" required="required">
+                                </div>
+                                <!-- upload picture -->
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                    <label>Upload Files</label>
+                                    <div class="custom-file">
+                                        <input type="file" name="images" multiple class="custom-file-input form-control" id="customFile">
+                                        <label class="custom-file-label" for="customFile">Choose files</label>
+                                    </div>
+                                    </div>
+                                    <div class="form-group">
+                                    <button type="button" name="upload" value="upload" id="upload" class="btn btn-block btn-light"><i class="fa fa-fw fa-upload"></i> Upload</button>
+                                    </div>
+                                </form>
+                                <div class="form-group">
+                                <label for="video">Video Link (Optional)</label>
+                                <input type="url" class="form-control" placeholder="Input in https:// or http:// format" name="video">
+                                </div>
+                                <div class="form-group">
+                                <label for="quantity">Target Minimum Quantity</label>
+                                $<input type="number" class="form-control" placeholder="The minimum number of orders needed to produce" name="quantity" required="required">
+                                </div>
+                                <div class="form-group">
+                                    <label for="notes">Notes (Optional)</label>
+                                    <textarea class="form-control" rows="2" name="notes"></textarea>
+                                </div>
+                            <button type="submit" class="btn btn-warning" style=" color:white ;background-color: #DD2337 !important">Create</button>
+                            </div>
+                            
+                        </div>    
+                    </form>
+                <br>
+                <br>
+                <h4 style="color: lightgray;">Step 2: Preview your total listed items to pre-sell for your new project</h4>
+                <h5>Total Items List</h5>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Title</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{product.id}}</td>
+                                <td>{{product.product_title}}</td>
+                                <td>
+                                    <a href="/show/{{product.id}}">View</a>
+                                    <a href="/edit/{{product.id}}">Edit</a>
+                                    <a href="/destroy/product/{{product.id}}">Delete</a>
+                                </td>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <h4 style="color: lightgray;">Step 3: Set up project launch date and duration</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="launchdate">Target Launch Date:</label>
+                        <input type="date" class="form-control" name="launchdate">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Target Duration: (days)</label>
+                        <input type="number" class="form-control" placeholder="Projects on AUMARCHE can last anywhere from 1 - 60 days" name="duration"> 
+                    </div>
+                    <button type="button" class="btn btn-warning" style="margin-left: 40%; color:white ;background-color: #DD2337 !important">Create Pre-sell Project</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

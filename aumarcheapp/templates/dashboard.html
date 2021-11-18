@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AUMARCHE Business</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg">
+
+        <a class="navbar-brand" href="/home">    
+            <img src="/static/img/logo.png" alt="icon" style="width: 20%;">   </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+            <a class="nav-link" href="/home" style="color: #DD2337;">Home</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/dashboard" style="color: #DD2337;">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/account" style="color: #DD2337;">Account</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="/logout" style="color: #DD2337;">Logout</a>
+            </li>
+        </ul>
+
+        </div>
+    </nav>
+    <div class="col-8 mx-auto" style="margin: 3%;">
+        <h2>{{user.company}}'s dashboard</h2>
+        <div>
+            <div class="card">
+                <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Title</th>
+                            <th>Actions</th>
+                            <th>Quantity/ Target</th>
+                            <th>Days Left</th>
+                            <th>Link to Share</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                            <tr>
+                                <td>{{product.species}}</td>
+                                <td>{{product.user_id.first_name}} {{tree.user_id.last_name}}</td>
+                                <td>
+                                    <a href="/show/{{product.id}}">View</a>
+                                    <a href="/show/{{product.id}}">Edit</a>
+                                    <a href="/show/{{product.id}}">Delete</a>
+                                </td>
+                                <td>quantity</td>
+                                <td>days left</td>
+                                <td>link to share</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
