@@ -14,7 +14,7 @@ def new_product():
     return render_template('new_product.html',user=User.get_by_id(data))
 
 
-@app.route('/create/product',methods=['POST'])
+@app.route('/create/product', methods=['POST'])
 def create_product():
     if 'user_id' not in session:
         return redirect('/logout')
@@ -46,7 +46,7 @@ def edit_product(id):
     user_data = {
         "id":session['user_id']
     }
-    return render_template("edit.html",product=Product.get_one(data),user=User.get_by_id(user_data))
+    return render_template("edit.html", product=Product.get_one(data),user=User.get_by_id(user_data))
 
 @app.route('/update/product',methods=['POST'])
 def update_product():

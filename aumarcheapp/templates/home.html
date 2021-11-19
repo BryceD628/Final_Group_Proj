@@ -59,7 +59,7 @@
                 <h4 style="color: lightgray;">Step 1: Create Items to pre-sell for your new project</h4>
                 <h5 class="card-title">Create New Item</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <form action="/create/project" method="POST">
+                    <form action="/create/product" method="POST">
                         <form action="/create/product" method="POST">
                         <div class="flex-container" style="display: flex;">
                             <div class="flex-child magenta" style="flex: 1; margin-right: 20px;">
@@ -75,6 +75,9 @@
                                 <div class="form-group">
                                     <label for="category" id="category">Category</label>
                                     <select class="form-control" required="required">
+                                        <option>Shirt</option>
+                                        <option>Sweatshirt</option>
+                                        <option>Pants</option>
                                         <li id="listing_category-401"><label class="selectit"><input value="401" type="checkbox" class="required option" name="_listing_category[]" id="in-listing_category-401" aria-required="true"> Artists/Bands</label>
                                             <ul class="children">
                                             <li id="listing_category-399"><label class="selectit"><input value="399" type="checkbox" class="required" name="_listing_category[]" id="in-listing_category-399" aria-required="true"> Acoustic Artists/Bands</label></li>
@@ -84,15 +87,16 @@
 
 
 
-                                        <option>Apparel</option>
-                                        <option>Shoes</option>
+                                            <li id="listing_category-401"><label class="selectit"><input value="401" type="checkbox" class="required option" name="_listing_category[]" id="in-listing_category-401" aria-required="true">Apparel</label>
+                                                <li id="listing_category-401"><label class="selectit"><input value="401" type="checkbox" class="required option" name="_listing_category[]" id="in-listing_category-401" aria-required="true">Shoes</label>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="size">Size Provided</label>
                                     <select class="form-control" required="required">
-                                        <option>Apparel</option>
-                                        <option>Shoes</option>
+                                        <option>S</option>
+                                        <option>M</option>
+                                        <option>L</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
